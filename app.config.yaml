@@ -1,0 +1,26 @@
+application:
+  actions: actions
+  runtimeManifest:
+    packages:
+      wallyOauth:
+        license: Apache-2.0
+        actions:
+          wallyOauth:
+            function: actions/wallyOauth/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              require-adobe-auth: false
+              final: true
+          publish-events:
+            function: actions/publish-events/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            inputs:
+              LOG_LEVEL: debug
+              apiKey: $SERVICE_API_KEY
+            annotations:
+              require-adobe-auth: false
+              final: true
